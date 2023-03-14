@@ -28,6 +28,9 @@ sudo -u kali bash -c "cd ~/dotfiles && ./install.sh"
 echo "Downloading SecLists"
 sudo -u kali bash -c "git clone https://github.com/danielmiessler/SecLists.git ~/SecLists"
 
+echo "Install Jupyter Lab"
+sudo -u kali bash -c "pip3 install jupyterlab"
+
 # Reboot system
 echo "Configuration complete. Rebooting system..."
 sudo reboot
