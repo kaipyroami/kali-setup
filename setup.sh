@@ -25,6 +25,9 @@ echo "Setting up user configurations..."
 sudo -u kali bash -c "git clone https://github.com/kaipyroami/dotfiles.git ~/dotfiles"
 sudo -u kali bash -c "cd ~/dotfiles && ./install.sh"
 
+echo "Downloading SecLists"
+sudo -u kali bash -c "git clone https://github.com/danielmiessler/SecLists.git ~/SecLists"
+
 # Reboot system
 echo "Configuration complete. Rebooting system..."
 sudo reboot
