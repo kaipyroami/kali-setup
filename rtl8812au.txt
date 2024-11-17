@@ -1,0 +1,34 @@
+# https://kalitut.com/how-to-install-rtl8812au/
+
+apt-get update && apt-get upgrade
+
+apt-get install linux-headers-$(uname -r)
+
+apt-get install git
+
+git clone https://github.com/aircrack-ng/rtl8812au
+
+apt-get install dkms
+
+cd rtl8812au
+
+sudo ./dkms-install.sh
+
+sudo ./dkms-remove.sh
+
+dkms status
+
+reboot
+## disconnect wifi adapter
+## reconnect wifi adapter
+airmon-ng check kill
+iwconfig
+
+sudo ip link set wlan0 down # disable Wi-Fi interface wlan0
+sudo iwconfig wlan0 mode monitor # translate the wlan0 interface into monitoring mode
+sudo iwconfig wlan0 txpower 30 # if you need to increase the output power up to 30 dBi
+sudo ip link set wlan0 up # turn on wlan0 wifi interface
+
+airodump-ng wlan0
+
+airodump-ng wlan0 --bssid E8:94:F6:FD:95:D0 --channel 7 --write test-ap
